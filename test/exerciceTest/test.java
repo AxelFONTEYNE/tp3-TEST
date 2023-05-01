@@ -1,17 +1,41 @@
 package exerciceTest;
 import static org.junit.Assert.assertEquals;
 
-import exercice.exercice;
+import exercice.Welcome;
 
 public class test {
 	
-	public static void exercice1Test() {
-		assertEquals(exercice.exercice1("bob"), "Hello, Bob");
-		assertEquals(exercice.exercice1("Bob"), "Hello, Bob");
-		assertEquals(exercice.exercice1("8ob"), "Erreur dans le prénom");
+	public static void testPremiereLettreMaj() {
+		assertEquals(Welcome.welcome("Bob"), "Hello, Bob");
 	}
+	
+	public static void testPremiereLettreMin() {
+		assertEquals(Welcome.welcome("bob"), "Hello, Bob");
+	}
+	
+	public static void testPasUneLettre() {
+		assertEquals(Welcome.welcome("8ob"), "Erreur dans le prÃ©nom");
+	}
+	
+	public static void testCdcVide() {
+		assertEquals(Welcome.welcome(""), "Hello, my friend");
+	}
+	
+	public static void testQueDesEspaces() {
+		assertEquals(Welcome.welcome("  "), "Hello, my friend");
+	}
+	
+	public static void testCdcNull() {
+		assertEquals(Welcome.welcome(null), "Hello, my friend");
+	}
+	
 	public static void main(String[] args) {
-		exercice1Test();
+		testPremiereLettreMaj();
+		testPremiereLettreMin();
+		testPasUneLettre();
+		testCdcVide();
+		testQueDesEspaces();
+		testCdcNull();
 	}
 
 }
