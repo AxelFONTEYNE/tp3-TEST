@@ -12,9 +12,17 @@ public class Welcome {
 		}
 	    return onlySpaces;
 	}
+	
+	private static boolean onlyMaj(String cdc) {
+		boolean onlyMaj = true;
+		for(int i = 0; i < cdc.length(); i++) {
+			if(cdc.charAt(i) < 65 || cdc.charAt(i) > 90)onlyMaj = false;
+		}
+		return onlyMaj;
+	}
 	public static String welcome(String prenom) {
 		if(prenom.length() == 0 || onlySpaces(prenom)) return "Hello, my friend";
-		
+		if(onlyMaj(prenom)) return "HELLO, " + prenom + " !";
 		char premiereLettre = prenom.charAt(0);
 		int asciiPremiereLettre = premiereLettre;
 		if(asciiPremiereLettre >= 97 && asciiPremiereLettre <= 122) {

@@ -29,6 +29,10 @@ public class test {
 		assertEquals(Welcome.welcome(null), "Hello, my friend");
 	}
 	
+	public static void testPrenomMaj() {
+		assertEquals(Welcome.welcome("JERRY"), "“HELLO, JERRY !");
+	}
+	
 	public static void main(String[] args) {
 		testPremiereLettreMaj();
 		testPremiereLettreMin();
@@ -36,6 +40,7 @@ public class test {
 		testCdcVide();
 		testQueDesEspaces();
 		testCdcNull();
+		testPrenomMaj();
 	}
 
 }
