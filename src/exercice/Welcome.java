@@ -61,12 +61,34 @@ public class Welcome {
 		if(onlyMaj(prenom)) return "HELLO, " + prenom + " !";
 		String prenoms[] = prenom.split(",");
 		if(plusieursPrenoms(prenom)) {
-			String chaineDePrenoms = prenoms[0];
-			for(int i = 1; i < prenoms.length; i++) {
+			boolean isMaj = false;
+			boolean isMin = false;
+			String chaineDePrenoms = "";
+			String chaineDePrenomsMaj = "";
+			for(int i = 0; i < prenoms.length; i++) {
 				if(!prenomValide(prenoms[0]) || !prenomValide(prenoms[i])) return "Erreur dans le prénom";
-				chaineDePrenoms += ", " + premiereLettreMaj(prenoms[i]);
+				if(onlyMaj(prenoms[i])) {
+					isMaj = true;
+					chaineDePrenomsMaj += prenoms[i] + ", ";
+				}else {
+					isMin = true;
+				    chaineDePrenoms += premiereLettreMaj(prenoms[i]) + ", ";
+				}
 			}
-			return ("Hello, " + chaineDePrenoms);
+			
+			
+			if(isMaj && isMin) {
+				chaineDePrenoms = chaineDePrenoms.substring(0,chaineDePrenoms.length()-2);
+				chaineDePrenomsMaj = chaineDePrenomsMaj.substring(0,chaineDePrenomsMaj.length()-2);
+				return ("Hello, " + chaineDePrenoms + ". AND HELLO, " + chaineDePrenomsMaj + " !");
+			}else if(isMaj) {
+				chaineDePrenomsMaj = chaineDePrenomsMaj.substring(0,chaineDePrenomsMaj.length()-2);
+				return ("HELLO, " + chaineDePrenomsMaj + " !");
+			}else {
+				chaineDePrenoms = chaineDePrenoms.substring(0,chaineDePrenoms.length()-2);
+				return ("Hello, " + chaineDePrenoms);
+			}
+			
 		}
 		else {
 			if(!prenomValide(prenom)) return "Erreur dans le prénom";
