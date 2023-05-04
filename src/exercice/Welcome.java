@@ -47,14 +47,26 @@ public class Welcome {
 		}
 		return plusieursPrenoms;
 	}
+	
+	public static String chaineDePrenoms(String[] prenoms) {
+		String cdp = prenoms[0];
+		for(int i = 1; i < prenoms.length; i++) {
+			cdp += ", " + prenoms[i];
+		}
+		return cdp;
+	}
 	public static String welcome(String prenom) {
 		if(prenom == null) return "Hello, my friend";
 		if(prenom.length() == 0 || onlySpaces(prenom)) return "Hello, my friend";
 		if(onlyMaj(prenom)) return "HELLO, " + prenom + " !";
 		String prenoms[] = prenom.split(",");
 		if(plusieursPrenoms(prenom)) {
-			if(!prenomValide(prenoms[0]) || !prenomValide(prenoms[1])) return "Erreur dans le prénom";
-			return ("Hello, " + premiereLettreMaj(prenoms[0]) + ", " + premiereLettreMaj(prenoms[1]) + "");
+			String chaineDePrenoms = prenoms[0];
+			for(int i = 1; i < prenoms.length; i++) {
+				if(!prenomValide(prenoms[0]) || !prenomValide(prenoms[i])) return "Erreur dans le prénom";
+				chaineDePrenoms += ", " + premiereLettreMaj(prenoms[i]);
+			}
+			return ("Hello, " + chaineDePrenoms);
 		}
 		else {
 			if(!prenomValide(prenom)) return "Erreur dans le prénom";

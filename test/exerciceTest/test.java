@@ -36,6 +36,18 @@ public class test {
 	public static void testPlusieursPrenoms() {
 		assertEquals(Welcome.welcome("Amy,bob"), "Hello, Amy, Bob");
 	}
+	
+	public static void testPlusieursPrenomsIncorrects() {
+		assertEquals(Welcome.welcome("8my,b0b"), "Erreur dans le prénom");
+	}
+	
+	public static void testTroisPrenoms() {
+		assertEquals(Welcome.welcome("Amy,bob,jerry"), "Hello, Amy, Bob, Jerry");
+	}
+	
+	public static void testTroisPrenomsErreur() {
+		assertEquals(Welcome.welcome("Amy,8ob,jerry"), "Erreur dans le prénom");
+	}
 
 
 
@@ -48,7 +60,9 @@ public class test {
 		testCdcNull();
 		testPrenomMaj();
 		testPlusieursPrenoms();
-		System.out.println("bboiuu");
+		testPlusieursPrenomsIncorrects();
+		testTroisPrenoms();
+		testTroisPrenomsErreur();
 		
 	}
 }
