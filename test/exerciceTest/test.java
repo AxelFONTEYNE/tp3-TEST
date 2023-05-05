@@ -48,6 +48,14 @@ public class test {
 	public static void testTroisPrenomsErreur() {
 		assertEquals(Welcome.welcome("Amy,8ob,jerry"), "Erreur dans le prénom");
 	}
+	
+	public static void testDifferentsTypesDePrenoms() {
+		assertEquals(Welcome.welcome("Amy,BOB,Jerry"), "Hello, Amy, Jerry. AND HELLO, BOB !");
+	}
+	
+	public static void testPlusieursPrenomsMaj() {
+		assertEquals(Welcome.welcome("BOB,BOOOB"), "HELLO, BOB, BOOOB !");
+	}
 
 
 
@@ -63,6 +71,7 @@ public class test {
 		testPlusieursPrenomsIncorrects();
 		testTroisPrenoms();
 		testTroisPrenomsErreur();
-		
+		testDifferentsTypesDePrenoms();
+		testPlusieursPrenomsMaj();
 	}
 }
